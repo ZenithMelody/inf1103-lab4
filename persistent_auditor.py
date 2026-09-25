@@ -11,9 +11,14 @@ def load_inventory():
         # make txt if empty
         with open("orders.txt", "a+") as f:
             f.seek(0)
-            orders = f.read().splitlines()
+            orders = [line.strip() for line in f if line.strip()]
     except FileNotFoundError:
         orders = []
+
+def save_inventory():
+    with open("orders.txt", "w") as f:
+        for order in orders:
+            f.write(order + "\n")
 
 # report summary
 def generate_report(inventory, failed_Enteries, total_Tax):
@@ -37,8 +42,8 @@ quantity = input("Enter Quantity: ")
 next_id = 1001 if not orders else int(orders[-1].split(",")[0].strip()) + 1
 new_order = f"{next_id}, {product_name}, {quantity}"
 
-# tracking history
 orders.append(new_order)
+save_inventory()
 
 print("\nNew Order Added:")
 print(f"{next_id},{product_name},{quantity}\n")

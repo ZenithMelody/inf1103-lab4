@@ -1,0 +1,4 @@
+1001, mouse, 2
+1002, keyboard, 1
+1003, cable 3, 3
+1004, laptop stand, 2
