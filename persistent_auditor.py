@@ -35,6 +35,10 @@ quantity = input("Enter Quantity: ")
 
 # incremental order ID 
 next_id = 1001 if not orders else int(orders[-1].split(",")[0].strip()) + 1
+new_order = f"{next_id}, {product_name}, {quantity}"
+
+# tracking history
+orders.append(new_order)
 
 print("\nNew Order Added:")
 print(f"{next_id},{product_name},{quantity}\n")
